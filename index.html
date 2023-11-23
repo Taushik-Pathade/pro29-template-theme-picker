@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Template Theme Picker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<form id="styles">
+  <input id="d" type="search" placeholder="Search for your charity name or website" autofocus="autofocus"/>
+  <input type="submit" hidden="hidden"/>
+  <select id="f">
+    <option value="inter, helvetica" selected="selected">Modern</option>
+    <option value="georgia">Elegant</option>
+    <option value="arial black">Impact</option>
+  </select>
+  <input type="color" value="#b7b9cd" id="c"/>
+  <select id="s">
+    <option value="small">Small</option>
+    <option value="default" selected="selected">Default</option>
+    <option value="large">Large</option>
+  </select>
+  <label>
+    <input type="checkbox" checked="checked" id="b-r"/>Rounded corners
+  </label>
+  <label>
+    <input type="checkbox" checked="checked" id="b-s"/>Box shadow	
+  </label>
+</form>
+<div class="templates">
+  <div class="template template--p2p">
+    <div class="section header"></div>
+    <div class="section">
+      <div class="col">
+        <div class="profile">
+          <div class="logo"></div>
+          <div class="profile__content">
+            <div class="heading">Taushik</div>
+            <div class="share">
+              <div class="share__button"></div>
+              <div class="share__button"></div>
+              <div class="share__button"></div>
+              <div class="share__button"></div>
+            </div>
+          </div>
+        </div>
+        <div class="progress-bar"></div>
+        <div class="text">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="donation-form">
+          <div class="donation-form__header"></div>
+          <div class="donation-form__content">
+            <div class="donation-form__amounts">
+              <button class="donation-form__amount">$10</button>
+              <button class="donation-form__amount donation-form__amount--selected">$25</button>
+              <button class="donation-form__amount">$50</button>
+              <button class="donation-form__amount">$100</button>
+              <input class="donation-form__amount" type="text" placeholder="$ Other"/>
+            </div>
+            <button class="donation-form__button">Donate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="template template--form">
+    <div class="section">
+      <div class="col">
+        <div class="donation-form">
+          <div class="donation-form__header"></div>
+          <div class="donation-form__content">
+            <div class="heading">Donate now</div>
+            <div class="donation-form__amounts">
+              <button class="donation-form__amount">$10</button>
+              <button class="donation-form__amount donation-form__amount--selected">$25</button>
+              <button class="donation-form__amount">$50</button>
+              <button class="donation-form__amount">$100</button>
+              <input class="donation-form__amount" type="text" placeholder="$ Other"/>
+            </div>
+            <button class="donation-form__button">Donate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="template template--community-hub">
+    <div class="section header">
+      <div class="col">
+        <div class="logo"> </div>
+        <div class="heading">Community Fundraising Hub</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="col">
+        <div class="image-tiles">
+          <div class="image-tile">Birthday</div>
+          <div class="image-tile">Wedding</div>
+          <div class="image-tile">In Memory	</div>
+          <div class="image-tile">Bake Sale</div>
+          <div class="image-tile">Adventure</div>
+          <div class="image-tile">Activity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="template template--appeal">
+    <div class="section header">
+      <div class="col">
+        <div class="logo"></div>
+        <div class="heading">Donate now</div>
+        <div class="progress-bar"></div>
+        <div class="text">
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="donation-form">
+          <div class="donation-form__header"></div>
+          <div class="donation-form__content">
+            <div class="donation-form__amounts">
+              <button class="donation-form__amount">$10</button>
+              <button class="donation-form__amount donation-form__amount--selected">$25</button>
+              <button class="donation-form__amount">$50</button>
+              <button class="donation-form__amount">$100</button>
+              <input class="donation-form__amount" type="text" placeholder="$ Other"/>
+            </div>
+            <button class="donation-form__button">Donate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="donation-stream">
+      <div class="donation-stream__track">
+        <div class="donation-stream__item"></div>
+        <div class="donation-stream__item"></div>
+        <div class="donation-stream__item"></div>
+        <div class="donation-stream__item"></div>
+        <div class="donation-stream__item"></div>
+        <div class="donation-stream__item"></div>
+        <div class="donation-stream__track">
+          <div class="donation-stream__item"></div>
+          <div class="donation-stream__item"></div>
+          <div class="donation-stream__item"></div>
+          <div class="donation-stream__item"></div>
+          <div class="donation-stream__item"></div>
+          <div class="donation-stream__item"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

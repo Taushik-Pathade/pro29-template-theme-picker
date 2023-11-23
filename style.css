@@ -1,0 +1,425 @@
+:root {
+  --b-r: 1;
+  --b-s: 1;
+  --f: "Inter", "helvetica";
+  --s: 1;
+  --i: 100%;
+  --c-h: 235;
+  --c-s: 18%;
+  --c-l: 76%;
+  --l-c: currentcolor;
+}
+
+* {
+  transition: 0.25s;
+  transition-property: background, border-color, color, border-radius, box-shadow;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: hsla(var(--c-h) var(--c-s) 98%/1);
+  color: hsla(var(--c-h) var(--c-s) 10%/1);
+  font-family: var(--f);
+  font-size: max(1em, 2vmin);
+}
+
+.templates {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  gap: 10vmin;
+  flex-grow: 1;
+  padding: 15vmin;
+  box-sizing: border-box;
+}
+.templates > * {
+  flex: 10 0 auto;
+}
+.templates > *:last-child {
+  margin-right: 15vmin;
+}
+.templates::-webkit-scrollbar {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  padding: 2em;
+  gap: 1em;
+  max-width: 80ch;
+  margin: 0 auto;
+  font-size: 90%;
+}
+form::-webkit-scrollbar {
+  display: none;
+}
+form select,
+form input:not([hidden]) {
+  font-family: inherit;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0.15rem solid hsla(var(--c-h) var(--c-s) 85%/1);
+  border-radius: 0.5rem;
+  background: white;
+  outline: none;
+  flex-shrink: 0;
+  flex-grow: 1;
+  outline: none;
+  font-family: inherit;
+  color: inherit;
+  font-size: inherit;
+}
+form select:hover,
+form input:not([hidden]):hover {
+  border-color: hsla(var(--c-h) var(--c-s) 66.6%/1);
+}
+label:focus-within form select, form select:focus,
+label:focus-within form input:not([hidden]),
+form input:not([hidden]):focus {
+  border-color: hsla(var(--c-h) var(--c-s) 33.3%/1);
+}
+form select[type=color],
+form input:not([hidden])[type=color] {
+  height: unset;
+  padding: 0.15em;
+  cursor: pointer;
+}
+form select[type=color]::-moz-color-swatch,
+form input:not([hidden])[type=color]::-moz-color-swatch {
+  border-radius: 0.35em;
+}
+form select[type=color]::-webkit-color-swatch,
+form input:not([hidden])[type=color]::-webkit-color-swatch {
+  border-radius: 0.35em;
+  height: 100%;
+}
+form label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  cursor: pointer;
+}
+form input[type=search] {
+  text-align: center;
+  padding: 0.5em;
+  font-size: 1.25em;
+  width: 100%;
+  min-width: 40ch;
+  background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24'%3E%3Cpath d='M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z'%3E%3C/path%3E%3C/svg%3E") no-repeat right 0.75em top 50%/1.25em;
+}
+@supports (-moz-appearance: none) {
+  form input[type=search] {
+    display: none;
+  }
+}
+form select {
+  cursor: pointer;
+  padding: 1em;
+  padding-right: 2.5em;
+  background: white url("data:image/svg+xml;utf8,<svg viewBox='0 0 140 140' width='24' height='24' stroke='black' stroke-width='10' xmlns='http://www.w3.org/2000/svg'><path d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='currentColor'/></svg>") no-repeat;
+  background-position: right 0.75em top 50%;
+  background-size: 1em;
+}
+form input[type=checkbox] {
+  width: 1.75em;
+  height: 1.75em;
+  box-shadow: inset 0 0 0 0.25em white, inset 1.5em 0 0 white;
+  border-radius: 0.4em;
+}
+form input[type=checkbox]:checked {
+  box-shadow: inset 0 0 0 0.15em white, inset 1.5em 0 0 hsla(var(--c-h) var(--c-s) 50%/1);
+}
+
+.template {
+  border-radius: max(0.15em, calc(0.75em * var(--b-r)));
+  width: max(750px, 85vmin);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  aspect-ratio: 1/0.6;
+  position: relative;
+  overflow: auto;
+  background: white;
+  box-shadow: 0 0 calc(3vmin * var(--b-s)) hsla(var(--c-h) var(--c-s) 10%/0.1);
+}
+.template--p2p .header + .section {
+  padding-top: 0;
+  margin-top: -2.25em;
+}
+.template--form {
+  justify-content: center;
+  background: hsla(var(--c-h) var(--c-s) 90%/1);
+}
+.template--form .section {
+  justify-content: center;
+  max-width: 55%;
+}
+.template--form .donation-form {
+  background: white;
+}
+.template--community-hub .header {
+  align-items: flex-end;
+  text-align: center;
+}
+.template--community-hub .header .col {
+  align-items: center;
+}
+.template--appeal .header {
+  flex-grow: 1;
+}
+.template--appeal .col {
+  justify-content: center;
+}
+
+.section {
+  width: 100%;
+  display: flex;
+  gap: calc(2em * min(1.25,var(--s)));
+  padding: calc(4vmin * min(1.25,var(--s))) 5vmin;
+  box-sizing: border-box;
+}
+
+.header {
+  background: hsla(var(--c-h) var(--c-s) 33.3%/1);
+  color: white;
+}
+.header:empty {
+  min-height: calc(10em * var(--s));
+}
+
+.col {
+  flex-grow: 1;
+  flex-basis: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: calc(1em * var(--s));
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  font-size: 75%;
+  opacity: 0.15;
+}
+.text .line {
+  height: 1em;
+  border-radius: 0.333em;
+  background: currentcolor;
+}
+.text .line:last-child {
+  width: 66.6%;
+}
+
+.heading {
+  font-size: 125%;
+}
+
+.logo {
+  height: 4.5em;
+  width: 4.5em;
+  border-radius: max(0.25em, calc(50% * var(--b-r)));
+  background: var(--logo) no-repeat center/contain;
+  background-color: hsla(var(--c-h) var(--c-s) 75%/1);
+  box-shadow: 0 0 calc(1em * var(--b-s)) hsla(var(--c-h) var(--c-s) 10%/0.1), inset 0 0 0 0.15em hsla(var(--c-h) var(--c-s) 95%/1);
+}
+
+.progress-bar {
+  width: 100%;
+  border-radius: max(0.15em, calc(0.75em * var(--b-r)));
+  background: hsla(var(--c-h) var(--c-s) 90%/1);
+  font-size: 85%;
+  margin: -0.25em 0;
+}
+.progress-bar:before {
+  content: "";
+  height: calc(1em * var(--s));
+  width: 66.6%;
+  background: hsla(var(--c-h) var(--c-s) 50%/1);
+  display: block;
+  border-radius: inherit;
+}
+
+.profile,
+.profile__content {
+  display: flex;
+  gap: calc(0.5em * var(--s));
+  align-items: stretch;
+}
+.profile .heading,
+.profile__content .heading {
+  color: hsla(var(--c-h) var(--c-s) 98%/1);
+}
+
+.profile__content {
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(0.5em * var(--s));
+}
+.share__button {
+  --size: calc(1em * var(--s));
+  height: var(--size);
+  width: var(--size);
+  border-radius: max(0.1em, calc(0.5em * var(--b-r)));
+  background: hsla(var(--c-h) var(--c-s) 70%/1);
+}
+
+.donation-form {
+  position: relative;
+  overflow: hidden;
+  border-radius: max(0.15em, calc(0.75em * var(--b-r)));
+  display: flex;
+  flex-direction: column;
+  background: hsla(var(--c-h) var(--c-s) 98%/1);
+  box-shadow: 0 0 calc(1em * var(--b-s)) hsla(var(--c-h) var(--c-s) 10%/0.1), inset 0 0 0 2px hsla(var(--c-h) var(--c-s) 95%/1);
+}
+.donation-form__header {
+  height: 2.25em;
+  background: hsla(var(--c-h) var(--c-s) 60%/1);
+}
+.donation-form .heading {
+  text-align: center;
+  margin-top: -0.25em;
+}
+.donation-form__content {
+  padding: calc(1.25em * var(--s));
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+}
+.donation-form__amounts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(0.5em * var(--s));
+}
+.donation-form__amount {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: max(0.15em, calc(0.4em * var(--b-r)));
+  border: 0.2em solid hsla(var(--c-h) var(--c-s) var(--c-l)/1);
+  background: transparent;
+  font-family: inherit;
+  width: 15%;
+  flex-grow: 1;
+  padding: calc(0.5em * var(--s));
+  font-weight: 600;
+  font-size: inherit;
+  box-sizing: content-box;
+}
+.donation-form__amount:not(input) {
+  cursor: pointer;
+}
+.donation-form__amount--selected {
+  box-shadow: 0 0 0 0.2em hsla(var(--c-h) var(--c-s) 90%/1);
+}
+.donation-form__amount--selected:not(input), .donation-form__amount:hover:not(input), .donation-form__amount:focus:not(input) {
+  background: hsla(var(--c-h) var(--c-s) var(--c-l)/1);
+  color: var(--l-c);
+}
+.donation-form__button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0.2em solid hsla(var(--c-h) var(--c-s) var(--c-l)/1);
+  border-radius: max(0.15em, calc(0.4em * var(--b-r)));
+  background: hsla(var(--c-h) var(--c-s) var(--c-l)/1);
+  padding: calc(0.5em * var(--s));
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--l-c);
+  font-size: inherit;
+}
+
+.image-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(0.75em * var(--s));
+}
+
+.image-tile {
+  border-radius: max(0.15em, calc(0.4em * var(--b-r)));
+  flex-basis: 25%;
+  flex-grow: 1;
+  background: hsla(var(--c-h) var(--c-s) 30%/1);
+  color: white;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/calc(0.6 * var(--s));
+  box-shadow: 0 0 calc(0.2em * var(--b-s)) hsla(var(--c-h) var(--c-s) 10%/0.25);
+  cursor: pointer;
+}
+.image-tile:hover {
+  box-shadow: 0 0 calc(0.5em * var(--b-s)) hsla(var(--c-h) var(--c-s) 20%/0.75);
+}
+
+.donation-stream {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  padding: calc(1em * var(--s)) 0;
+  max-width: 100%;
+}
+.donation-stream__track {
+  display: flex;
+  gap: calc(1em * var(--s));
+  -webkit-animation: donation-ticker 10s linear infinite;
+          animation: donation-ticker 10s linear infinite;
+  position: relative;
+}
+.donation-stream__track .donation-stream__track {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: calc(1em * var(--s));
+  -webkit-animation: none;
+          animation: none;
+}
+@-webkit-keyframes donation-ticker {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@keyframes donation-ticker {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.donation-stream__item {
+  display: flex;
+  align-items: center;
+  gap: calc(1em * var(--s));
+  font-size: 70%;
+}
+.donation-stream__item:before {
+  content: "";
+  width: 2.25em;
+  height: 2.25em;
+  background: hsla(var(--c-h) var(--c-s) 80%/1);
+  transition: border-radius 0.25s;
+  border-radius: max(0.25em, calc(50% * var(--b-r)));
+}
+.donation-stream__item:after {
+  content: "";
+  width: 10ch;
+  height: 1em;
+  border-radius: 0.333em;
+  background: currentcolor;
+  opacity: 0.15;
+}
